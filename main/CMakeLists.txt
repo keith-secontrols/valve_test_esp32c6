@@ -2,6 +2,8 @@ idf_component_register(
     SRCS
         "main.c"
         "lcd.c"
+        "as5600.c"
+        "drv8871.c"
     INCLUDE_DIRS
         "."
     REQUIRES

@@ -19,11 +19,10 @@
 #define UART_TX_GPIO    16
 #define UART_RX_GPIO    17
 
-/* ── Future: H-bridge ────────────────────────────────────── */
-/* #define HBRIDGE_IN1_GPIO   x  */
-/* #define HBRIDGE_IN2_GPIO   x  */
-/* #define HBRIDGE_ENA_GPIO   x  */
+/* ── DRV8871 H-bridge (PWM) ──────────────────────────────── */
+#define MOTOR_IN1_GPIO  10
+#define MOTOR_IN2_GPIO  11
 
-/* ── Future: I2C sensor ──────────────────────────────────── */
-/* #define I2C_SDA_GPIO       x  */
-/* #define I2C_SCL_GPIO       x  */
+/* ── I2C bus (AS5600 angle sensor) ───────────────────────── */
+#define I2C_SDA_GPIO    4
+#define I2C_SCL_GPIO    5
