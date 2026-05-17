@@ -39,7 +39,11 @@ void lcd_draw_rect(int x1, int y1, int x2, int y2,
 void lcd_draw_char(int x, int y, char c,
                    uint16_t fg, uint16_t bg);                 // single 8×8 character
 void lcd_draw_text(int x, int y, const char *str,
-                   uint16_t fg, uint16_t bg);                 // string, 8 px per character
+                   uint16_t fg, uint16_t bg);                 // string, 8×8 font
+void lcd_draw_char_xl(int x, int y, char c,
+                      uint16_t fg, uint16_t bg);              // single 12×16 character
+void lcd_draw_text_xl(int x, int y, const char *str,
+                      uint16_t fg, uint16_t bg);              // string, 12×16 font
 ```
 
 Colour helpers (RGB565):
@@ -49,7 +53,12 @@ RGB565(r, g, b)   // build a colour from 8-bit components
 BLACK, WHITE, RED, GREEN, BLUE, YELLOW, CYAN, MAGENTA
 ```
 
-Font is the public-domain IBM 8×8 VGA bitmap font (full printable ASCII).
+### Fonts
+
+| Function | Size | Source |
+|----------|------|--------|
+| `lcd_draw_text` | 8×8 px | Public-domain IBM VGA bitmap font (`font8x8.h`) |
+| `lcd_draw_text_xl` | 12×16 px | CP437/IBM VGA raster font (`font12x16.h`, [idispatch/raster-fonts](https://github.com/idispatch/raster-fonts)) |
 
 ## Notes
 
