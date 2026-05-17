@@ -13,10 +13,10 @@ void app_main(void)
     ESP_LOGI(TAG, "Waveshare ESP32-C6-LCD-1.47 starting");
 
     drv8871_init();
-    drv8871_set(25);
-    vTaskDelay(pdMS_TO_TICKS(2000));
-    drv8871_set(-25);
-    vTaskDelay(pdMS_TO_TICKS(2000));
+    drv8871_set(3);
+    vTaskDelay(pdMS_TO_TICKS(6000));
+    drv8871_set(-3);
+    vTaskDelay(pdMS_TO_TICKS(6000));
     drv8871_set(0);
 
     lcd_init();

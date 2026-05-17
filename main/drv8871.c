@@ -4,7 +4,7 @@
 #include "esp_log.h"
 #include <stdlib.h>
 
-#define PWM_FREQ_HZ    20000               /* above audible range */
+#define PWM_FREQ_HZ    100
 #define PWM_RES        LEDC_TIMER_10_BIT
 #define PWM_MAX        ((1u << 10) - 1)    /* 1023 */
 #define TIMER          LEDC_TIMER_0
