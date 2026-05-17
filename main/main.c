@@ -15,10 +15,10 @@ void app_main(void)
 
     lcd_fill(BLACK);
     lcd_backlight(1);
-    lcd_draw_rect(10, 10, 162, 60, BLUE);
-    lcd_draw_text(18, 22, "Hello, World!", WHITE, BLUE);
-    lcd_draw_rect(10, 70, 162, 120, RED);
-    lcd_draw_text(18, 82, "0123456789", WHITE, RED);
+    lcd_draw_rect(10, 10, 162, 36, BLUE);
+    lcd_draw_text(18, 18, "Small 8x8", WHITE, BLUE);
+    lcd_draw_rect(10, 50, 162, 98, GREEN);
+    lcd_draw_text_xl(14, 57, "Large 12x16", BLACK, GREEN);
 
     ESP_LOGI(TAG, "ready");
 

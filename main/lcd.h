@@ -18,3 +18,5 @@ void lcd_fill(uint16_t colour);
 void lcd_draw_rect(int x1, int y1, int x2, int y2, uint16_t colour);
 void lcd_draw_char(int x, int y, char c, uint16_t fg, uint16_t bg);
 void lcd_draw_text(int x, int y, const char *str, uint16_t fg, uint16_t bg);
+void lcd_draw_char_xl(int x, int y, char c, uint16_t fg, uint16_t bg);  /* 12x16, native */
+void lcd_draw_text_xl(int x, int y, const char *str, uint16_t fg, uint16_t bg);

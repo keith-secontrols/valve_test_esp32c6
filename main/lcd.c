@@ -1,5 +1,6 @@
 #include "lcd.h"
 #include "font8x8.h"
+#include "font12x16.h"
 #include "board.h"
 #include "esp_lcd_panel_io.h"
 #include "esp_lcd_panel_vendor.h"
@@ -13,6 +14,7 @@ static esp_lcd_panel_handle_t s_panel;
 static esp_lcd_panel_io_handle_t s_io;
 static uint16_t s_line[LCD_H_RES];
 static uint16_t s_char_buf[8 * 8];
+static uint16_t s_char_xl_buf[12 * 16];
 
 void lcd_init(void)
 {
@@ -96,6 +98,7 @@ void lcd_draw_char(int x, int y, char c, uint16_t fg, uint16_t bg)
 {
     uint8_t idx = (uint8_t)c;
     if (idx >= 128) idx = '?';
+    esp_lcd_panel_io_tx_param(s_io, 0x00, NULL, 0);
     for (int row = 0; row < 8; row++)
         for (int col = 0; col < 8; col++)
             s_char_buf[row * 8 + col] = (font8x8[idx][row] >> col) & 1 ? fg : bg;
@@ -107,5 +110,26 @@ void lcd_draw_text(int x, int y, const char *str, uint16_t fg, uint16_t bg)
     while (*str) {
         lcd_draw_char(x, y, *str++, fg, bg);
         x += 8;
+    }
+}
+
+
+void lcd_draw_char_xl(int x, int y, char c, uint16_t fg, uint16_t bg)
+{
+    uint8_t idx = (uint8_t)c;
+    esp_lcd_panel_io_tx_param(s_io, 0x00, NULL, 0);
+    for (int row = 0; row < 16; row++) {
+        uint16_t bits = ((uint16_t)font12x16[idx][row * 2] << 8) | font12x16[idx][row * 2 + 1];
+        for (int col = 0; col < 12; col++)
+            s_char_xl_buf[row * 12 + col] = (bits >> (15 - col)) & 1 ? fg : bg;
+    }
+    esp_lcd_panel_draw_bitmap(s_panel, x, y, x + 12, y + 16, s_char_xl_buf);
+}
+
+void lcd_draw_text_xl(int x, int y, const char *str, uint16_t fg, uint16_t bg)
+{
+    while (*str) {
+        lcd_draw_char_xl(x, y, *str++, fg, bg);
+        x += 12;
     }
 }
