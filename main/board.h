@@ -20,8 +20,8 @@
 #define UART_RX_GPIO    17
 
 /* ── DRV8871 H-bridge (PWM) ──────────────────────────────── */
-#define MOTOR_IN1_GPIO  10
-#define MOTOR_IN2_GPIO  11
+#define MOTOR_IN1_GPIO  2
+#define MOTOR_IN2_GPIO  3
 
 /* ── I2C bus (AS5600 angle sensor) ───────────────────────── */
 #define I2C_SDA_GPIO    4

@@ -32,8 +32,8 @@ ESP-IDF firmware for the [Waveshare ESP32-C6-LCD-1.47](https://www.waveshare.com
 |-------------|------------|-------|
 | VM | Motor supply + | 6.5–45 V motor supply |
 | GND | GND | Common ground with ESP32 |
-| IN1 | GPIO10 | PWM, 20 kHz |
-| IN2 | GPIO11 | PWM, 20 kHz |
+| IN1 | GPIO2 | PWM, 20 kHz |
+| IN2 | GPIO3 | PWM, 20 kHz |
 | OUT1 | Motor terminal A | |
 | OUT2 | Motor terminal B | |
 
