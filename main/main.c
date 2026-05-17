@@ -3,6 +3,7 @@
 #include "freertos/task.h"
 #include "esp_log.h"
 #include "lcd.h"
+#include "drv8871.h"
 #include "board.h"
 
 static const char *TAG = "main";
@@ -10,6 +11,13 @@ static const char *TAG = "main";
 void app_main(void)
 {
     ESP_LOGI(TAG, "Waveshare ESP32-C6-LCD-1.47 starting");
+
+    drv8871_init();
+    drv8871_set(25);
+    vTaskDelay(pdMS_TO_TICKS(2000));
+    drv8871_set(-25);
+    vTaskDelay(pdMS_TO_TICKS(2000));
+    drv8871_set(0);
 
     lcd_init();
 
